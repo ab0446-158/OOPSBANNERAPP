@@ -1,56 +1,63 @@
 class OOPSBannerApp {
-	public static String[] getOPattern(){
-		return new String[] {
-			"   ***   ",
-	        " **   ** ",
-			"**     **",
-			"**     **",
-			"**     **",
-			" **   ** ",
-			"   ***   ",
-			};	
-}
-public static String[] getPPattern(){
-	return new String[] {
-		" *****    ",
-		" **   **  ",
-		" **    ** ",
-		" **   **  ",
-		" *****    ",
-		" **       ",
-		" **       ",
-	};
-}
-public static String[] getSPattern(){
-	return new String[] {
-		"    ***** ",
-		"  **      ",
-		" **       ",
-		"  *****   ",
-		"      **  ",
-		" **   **  ",
-		"  *****   ",
-	};
-}
-		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-public static void main(String[] args) {
-	String[] oPattern = getOPattern();
-	String[] pPattern = getPPattern();
-	String[] sPattern = getSPattern();
+    static class CharacterPattern {
+        char letter;
+        String[] lines;
 
-for (int i = 0; i < oPattern.length; i++) {
-	System.out.println(oPattern[i] + " " + oPattern[i] + " " + pPattern[i] + " " + sPattern[i]);
+        CharacterPattern(char letter, String[] lines) {
+            this.letter = letter;
+            this.lines = lines;
+        }
+    }
 
-}
-}
+
+
+    public static void main(String[] args) {
+
+        CharacterPattern charO = new CharacterPattern('O', new String[]{
+            "   ***   ",
+            " **   ** ",
+            "**     **", 
+            "**     **",
+            "**     **", 
+            " **   ** ",
+            "   ***   ",
+        });
+
+        CharacterPattern charP = new CharacterPattern('P', new String[]{
+            " *****    ",
+            " **   **  ",
+            " **    ** ",
+            " **   **  ",
+            " *****    ",
+            " ** ", 
+            " ** ",
+        });
+
+        CharacterPattern charS = new CharacterPattern('S', new String[]{
+            "    ***** ",
+            "  **      ",
+            " **       ",
+            "  *****   ",
+            "      **  ",
+            "      **   **  ",
+            "       *****   ",
+        });
+
+
+        String[] banner = {" ", " ", " ", " ", " ", " ", " "};
+
+        CharacterPattern[] sequence = {charO, charO, charP, charS}; 
+
+        for (CharacterPattern cp : sequence) {
+            for (int i = 0; i < 7; i++) {
+
+                banner[i] += cp.lines[i] + " "; 
+            }
+        }
+
+
+        for (String row : banner) {
+            System.out.println(row);
+        }
+    }
 }
